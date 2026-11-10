@@ -1,0 +1,5 @@
+{
+  "note": "Estimation, pas une mesure : (tokens entrée + tokens sortie) / 1000 × coefficient Wh.",
+  "total_wh": 0,
+  "jours": []
+}

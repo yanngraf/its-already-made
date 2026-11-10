@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>It's Already Made : replay</title>
+<style>
+html,body{margin:0;height:100%;background:#000;color:#0f0;font:13px/1.3 "Courier New",Courier,monospace}
+body{display:flex;flex-direction:column}
+header{padding:6px 8px;border-bottom:1px solid #0f0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+#msg{flex:1;min-width:12em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+iframe{flex:1;border:0;background:#fff;width:100%}
+button,input{font:inherit}
+a{color:#0ff}
+</style>
+</head>
+<body>
+<header>
+<a href="./">&lt; retour</a>
+<button id="jouer">pause</button>
+<input id="pos" type="range" min="0" max="0" value="0" aria-label="position dans l'historique">
+<span id="date">chargement</span>
+<span id="msg"></span>
+</header>
+<iframe id="vue" sandbox="allow-scripts" title="version du jour"></iframe>
+<script>
+// Rejoue l'historique git : un commit d'index.html = un jour. Aucun fichier vidéo.
+// Dépôt GitHub public, modifiable avec ?repo=proprietaire/nom
+var DEPOT = new URLSearchParams(location.search).get("repo") || "yanngraf/its-already-made";
+var SECONDES_PAR_JOUR = 4;
+var $ = function (id) { return document.getElementById(id); };
+var commits = [], i = 0, minuteur = null, cache = {};
+
+async function listerCommits() {
+  var tout = [];
+  for (var page = 1; ; page++) {
+    var r = await fetch("https://api.github.com/repos/" + DEPOT + "/commits?path=index.html&per_page=100&page=" + page);
+    if (!r.ok) throw new Error("GitHub a répondu " + r.status);
+    var lot = await r.json();
+    tout = tout.concat(lot);
+    if (lot.length < 100) break;
+  }
+  return tout.reverse(); // du plus ancien au plus récent
+}
+
+async function montrer(n) {
+  i = n;
+  var c = commits[i];
+  $("pos").value = i;
+  $("date").textContent = (i + 1) + "/" + commits.length + " · " + c.commit.author.date.slice(0, 10);
+  $("msg").textContent = c.commit.message.split("\n")[0];
+  if (!cache[c.sha]) {
+    var r = await fetch("https://raw.githubusercontent.com/" + DEPOT + "/" + c.sha + "/index.html");
+    cache[c.sha] = r.ok ? await r.text() : "<pre>version introuvable (" + r.status + ")</pre>";
+  }
+  if (i === n) $("vue").srcdoc = cache[c.sha];
+}
+
+function jouer(oui) {
+  clearInterval(minuteur);
+  minuteur = oui ? setInterval(function () {
+    if (i + 1 >= commits.length) return jouer(false);
+    montrer(i + 1);
+  }, SECONDES_PAR_JOUR * 1000) : null;
+  $("jouer").textContent = oui ? "pause" : "lecture";
+}
+
+$("jouer").onclick = function () {
+  if (!minuteur && i + 1 >= commits.length) montrer(0);
+  jouer(!minuteur);
+};
+$("pos").oninput = function () { jouer(false); montrer(+this.value); };
+
+listerCommits().then(function (liste) {
+  if (!liste.length) throw new Error("aucun commit");
+  commits = liste;
+  $("pos").max = liste.length - 1;
+  montrer(0);
+  jouer(true);
+}).catch(function (e) {
+  $("date").textContent = "replay impossible";
+  $("msg").textContent = e.message + " (dépôt : " + DEPOT + ")";
+});
+</script>
+</body>
+</html>

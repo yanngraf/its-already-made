@@ -1,0 +1,38 @@
+name: quotidien
+
+on:
+  schedule:
+    # GitHub compte en UTC : 03:00 UTC = 04:00 en Suisse l'hiver, 05:00 l'été.
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: quotidien
+
+jobs:
+  mise-a-jour:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Réécrire le site
+        run: node scripts/mise-a-jour.mjs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+      - name: Commit et push
+        run: |
+          # Pas de message de commit = rien à publier (déjà fait aujourd'hui).
+          [ -f .commit-msg ] || exit 0
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add index.html manifeste.txt memoire.txt energie.json
+          git commit -F .commit-msg
+          git push

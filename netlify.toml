@@ -1,0 +1,15 @@
+# Site statique : aucun build, Netlify publie le dépôt tel quel à chaque push.
+[build]
+  publish = "."
+
+# Ceinture et bretelles pour la règle « aucune ressource externe » :
+# même si le script laissait passer quelque chose, le navigateur le bloquerait.
+[[headers]]
+  for = "/"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; form-action 'self'; base-uri 'none'"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; form-action 'self'; base-uri 'none'"

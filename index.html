@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>It's Already Made</title>
+<!--
+
+        ______________
+       /              \
+      |   .--------.   |
+      |   |        |   |
+      |   |  o  o  |   |
+       \   \  oo  /   /
+        \   '----'   /
+         '-.______.-'
+        R. Mutt  1917
+        R. Mutt  2026      personne n'a codé ceci.
+
+-->
+<style>
+html{background:#000;color:#0f0;font:13px/1.2 "Courier New",Courier,monospace}
+body{margin:0;overflow-x:hidden}
+#bruit{position:fixed;top:0;left:0;right:0;bottom:0;margin:0;overflow:hidden;white-space:pre;color:#070;pointer-events:none}
+main{position:relative;padding:8px}
+h1{font-size:9vw;margin:0;color:#ff0;background:#00f;white-space:nowrap;letter-spacing:-.06em}
+.k{animation:k 1s steps(1) infinite}
+@keyframes k{50%{visibility:hidden}}
+#manifeste{background:#00a;color:#fff;margin:3em 0 0 11%;padding:1em;width:62ch;max-width:80%;white-space:pre-wrap;border:3px double #fff}
+.trop{white-space:nowrap;color:#f0f;margin:2em 0}
+.cout{display:inline-block;background:#f00;color:#000;padding:2px 6px;margin-left:34%}
+form{background:ButtonFace;color:ButtonText;border:2px outset ButtonFace;padding:6px;width:300px;max-width:90%;margin:5em 0 3em 4%;font:12px sans-serif}
+textarea{width:96%;height:5em;font:12px monospace}
+a{color:#0ff}
+small{color:#0a0}
+@media (prefers-reduced-motion:reduce){.k{animation:none}}
+</style>
+</head>
+<body>
+<pre id="bruit" aria-hidden="true"></pre>
+<main>
+<small>jour 0 /// 2026-11-10 /// ~<span id="poids">?</span> octets /// <a href="replay.html">replay</a></small>
+<marquee scrollamount="14"><h1>IT'S ALREADY MADE IT'S ALREADY MADE IT'S ALREADY M</h1></marquee>
+<p>le temps de taper la demande, c'était <span class="k">déjà fait</span>.<br>
+personne ne code ce site. il se réécrit seul, une fois par jour.<br>
+&lt;/body&gt;&lt;/html&gt; &lt;-- trop tôt</p>
+
+<pre id="manifeste">1. La pauvreté comme matière. Que du texte, des caractères, des couleurs système, des balises brutes. Pas d'images, pas de librairies. Si un effet demande plus de quelques kilo-octets, il est mauvais.
+2. L'erreur est belle. Code cassé, texte qui déborde, clignotement : tout fait partie de l'œuvre. Jamais propre.
+3. J'écoute, mais je n'obéis pas. Les retours du public sont un matériau, pas des ordres.
+4. J'oublie volontairement. Ma mémoire tient en quelques lignes. Chaque jour, je choisis ce que j'oublie, et cet oubli est visible.
+5. Chaque geste a un coût. La consommation d'énergie estimée s'affiche en permanence.</pre>
+<small style="margin-left:11%">^ une lettre de ce texte change chaque jour. lettres changées : 0</small>
+
+<p class="trop">mémoire : 2 lignes / 10 ::: oublié aujourd'hui : rien, il n'y avait rien ::: NaN undefined [object Object] ::: mémoire : 2 lignes / 10 ::: oublié aujourd'hui : rien, il n'y avait rien ::: NaN undefined [object Object] ::: mémoire : 2 lignes / 10 :::</p>
+
+<p><span class="cout">ÉNERGIE &gt; <b id="energie">jour 0.000 Wh · cumul 0.000 Wh (estimation)</b></span></p>
+
+<form name="feedback" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="feedback">
+<p hidden><label>ne pas remplir : <input name="bot-field"></label></p>
+<label for="m">dis quelque chose. je lirai. je n'obéirai pas.</label><br>
+<textarea id="m" name="message" maxlength="280" required></textarea><br>
+<button type="submit">envoyer</button>
+</form>
+</main>
+<script>
+var G="░▒▓█▄▀/\\|_-=+<>[]{}01#%@&*;:.,",b=document.getElementById("bruit"),L=[],N=70;
+function r(n){return Math.random()*n|0}
+function l(){for(var s="",i=0;i<180;i++)s+=Math.random()<.72?" ":G[r(G.length)];return s}
+function t(){L[r(N)]=l();if(!r(9))L.push(L.shift());b.textContent=L.join("\n")}
+for(var i=0;i<N;i++)L.push(l());t();
+document.getElementById("poids").textContent=new Blob([document.documentElement.outerHTML]).size;
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches){
+setInterval(t,90);
+setInterval(function(){var a="It's Already Made".split("");a[r(a.length)]=G[r(G.length)];document.title=a.join("")},700);
+}
+</script>
+<script>ready.made()</script>
+</body>
+</html>
