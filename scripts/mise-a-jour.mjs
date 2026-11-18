@@ -91,8 +91,10 @@ export async function main() {
   const index = lire('index.html'), manifeste = lire('manifeste.txt').trimEnd(), memoire = lire('memoire.txt').trimEnd();
   const retours = await collecterRetours();
   const bloc = (nom, texte) => `<${nom}>\n${texte}\n</${nom}>`;
+  const rejetsHier = energie.jours.at(-1)?.rejets;
   const contenu = [
     `Date : ${date}. Jour ${jour}.`,
+    ...(rejetsHier ? [`Hier, le script a rejeté une partie de ta réponse et gardé la version de la veille : ${rejetsHier.join(' ; ')}.`] : []),
     bloc('index.html', index), bloc('manifeste.txt', manifeste), bloc('memoire.txt', memoire),
     bloc('retours_du_public', retours.length ? JSON.stringify(retours, null, 1) : '(aucun retour ces dernières 24 heures)'),
   ].join('\n\n');
@@ -123,6 +125,10 @@ export async function main() {
   const finir = (html) => injecter(injecter(html, 'manifeste', manifesteFinal), 'energie', texteEnergie);
   const candidat = typeof sortie.index_html === 'string' ? finir(sortie.index_html) : null;
   const indexFinal = garder(verifierIndex(candidat)) ? candidat : finir(index);
+  // Pour comprendre un rejet après coup : les balises de formulaire reçues vont dans le journal de l'Action.
+  if (indexFinal !== candidat) console.error('index rejeté. Formulaires reçus :', candidat?.match(/<(form|textarea)[^>]*>/gi) ?? 'aucun');
+  // Les rejets sont gardés pour être montrés à Claude le lendemain, sinon sa mémoire croit que le geste a eu lieu.
+  if (rejets.length) energie.jours.at(-1).rejets = rejets;
 
   writeFileSync('index.html', indexFinal);
   writeFileSync('manifeste.txt', manifesteFinal + '\n');

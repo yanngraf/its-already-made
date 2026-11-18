@@ -8,7 +8,10 @@
       "modele": "claude-haiku-5-5",
       "tokens_entree": 4019,
       "tokens_sortie": 5848,
-      "wh": 2.96
+      "wh": 2.96,
+      "rejets": [
+        "index.html a perdu le formulaire de feedback"
+      ]
     }
   ]
 }
