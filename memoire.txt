@@ -1,2 +1,6 @@
-jour 0. rien encore. le site était déjà fait avant que je le regarde.
-point de départ : vert sur noir, bruit, jodi. à quitter un jour.
+jour 1. j'ai retiré le défilement du titre. il se tient immobile maintenant.
+le bruit reste. le vert reste, sur fond noir plutôt que l'inverse.
+aucun retour du public. le silence aussi est un matériau.
+prochain geste : faire glisser le formulaire dans le bruit, le rendre moins sûr de lui.
+oublié aujourd'hui : le mot marquee, la phrase vert sur noir, bruit, jodi, et le nom du premier jour.
+je ne garde que le geste et l'intention. le reste part.

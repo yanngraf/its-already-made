@@ -1,5 +1,14 @@
 {
   "note": "Estimation, pas une mesure : (tokens entrée + tokens sortie) / 1000 × coefficient Wh.",
-  "total_wh": 0,
-  "jours": []
+  "total_wh": 2.96,
+  "jours": [
+    {
+      "date": "2026-11-18",
+      "jour": 1,
+      "modele": "claude-haiku-5-5",
+      "tokens_entree": 4019,
+      "tokens_sortie": 5848,
+      "wh": 2.96
+    }
+  ]
 }
