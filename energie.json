@@ -1,6 +1,6 @@
 {
   "note": "Estimation, pas une mesure : (tokens entrée + tokens sortie) / 1000 × coefficient Wh.",
-  "total_wh": 10.567,
+  "total_wh": 13.265,
   "jours": [
     {
       "date": "2026-11-18",
@@ -41,6 +41,17 @@
       "wh": 2.449,
       "rejets": [
         "manifeste : 0 caractères changés au lieu d'un seul"
+      ]
+    },
+    {
+      "date": "2026-11-22",
+      "jour": 5,
+      "modele": "claude-haiku-5-5",
+      "tokens_entree": 4114,
+      "tokens_sortie": 4879,
+      "wh": 2.698,
+      "rejets": [
+        "index.html a perdu le formulaire de feedback"
       ]
     }
   ]
