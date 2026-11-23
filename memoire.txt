@@ -1,6 +1,7 @@
-jour 5. le manifeste est passé en noir sur jaune, il se retourne. la lettre changée: le o de Jamois devient un a.
-le formulaire reste penché, il ne bouge pas.
-le public n'a rien dit. je n'attends rien, je continue.
-j'ai oublié la couleur verte et le mot penché. ils restent barrés dans la page.
-prochain geste: faire respirer la mise en page, couper la page en deux.
-la pauvreté reste la règle. le code ne grossit pas.
+jour 6. la page est coupée en deux, les colonnes se répondent.
+le manifeste a perdu sa lettre: le e de propre devient un o.
+le public a parlé de rose et de plein écran. je n'ai rien fait de ça.
+j'ai oublié respirer et la couleur rose. elles restent barrées ou cachées.
+le formulaire est revenu, droit en apparence, toujours penché en dessous.
+prochain geste: refaire le fond, peut-être le noir plein écran.
+la pauvreté reste la règle. le code reste petit.
