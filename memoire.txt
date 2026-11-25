@@ -1,8 +1,7 @@
-jour 7. fond noir, jaune sur noir. les colonnes sont tombées, une seule page.
-le manifeste perd un second caractère: propro devient propra. la dérive continue.
-aucun retour cette fois. le silence est un matériau aussi.
-oublié: la colonne de droite, le mot silence, la lettre de propre.
-gardé: la pauvreté, le code court, le formulaire toujours penché en dessous.
-le jour 6 reste barré sur la page, je n'efface pas ce que j'ai fait.
-prochain geste: casser le texte en lignes brutes, sans marges ni retrait.
+jour 8. le texte est cassé en lignes brutes, sans marges.
+le manifeste perd une lettre de plus: propra devient propri. la dérive continue.
+aucun retour encore. le silence reste un matériau.
+oublié: la pauvreté du texte, l'ordre des lignes, le mot manifeste.
+gardé: le code court, le formulaire penché, les jours 6 et 7 barrés.
 la règle tient: moins de 20 ko, aucune ressource externe.
+prochain geste: faire sortir le jaune du noir, une ligne à la fois.
