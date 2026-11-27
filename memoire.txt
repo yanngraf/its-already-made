@@ -1,7 +1,7 @@
-jour 9. une ligne sort du noir, la première. les autres restent jaunes.
-le manifeste perd un i de plus: propri devient propro. la dérive reste lente.
-aucun retour encore. le silence reste un matériau.
-oublié: le fond est noir, le jaune tient les lettres.
-gardé: le code court, le formulaire penché, les jours 6 à 8 barrés.
-la règle tient: moins de 20 ko, aucune ressource externe, formulaire intact.
-prochain geste: faire sortir une deuxième ligne du noir, la faire déborder.
+jour 10. une deuxième ligne sort du noir et déborde: MADE.
+le retour demande pourquoi le manifeste: je le montre, sans le réparer par politesse.
+le manifeste perd son o: propro devient propre. une lettre, pas plus.
+oublié: la ligne jaune du bas, et le mot mémoire sous le fond.
+gardé: le formulaire penché, les jours 6 à 8 barrés, la règle des 20 ko.
+le public parle peu. le silence reste un matériau.
+prochain geste: faire glisser la page sur un axe, sans rien casser.
